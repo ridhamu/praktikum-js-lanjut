@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi Suhu</title>
+</head>
+<body>
+    <h3>Konversi Suhu</h3>
+    <label for="inputCelsius">Celcius:</label>
+    <input type="number" id="inputCelsius" placeholder="Masukkan suhu Celcius">
+    <button onclick="convertTemperature()">Konversi</button>
+
+    <p>Fahrenheit: <span id="fahrenheit"></span></p>
+    <p>Reamur: <span id="reamur"></span></p>
+
+    <script>
+        function convertTemperature() {
+            const celsius = parseFloat(document.getElementById("inputCelsius").value);
+            const fahrenheit = (celsius * 9/5) + 32;
+            const reamur = celsius * 4/5;
+
+            document.getElementById("fahrenheit").textContent = fahrenheit.toFixed(2);
+            document.getElementById("reamur").textContent = reamur.toFixed(2);
+        }
+    </script>
+</body>
+</html>

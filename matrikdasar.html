@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operasi Matriks</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"></script>
+  </head>
+  <body>
+    <h3>Operasi Matriks: Penjumlahan, Transpose, Inverse, dan Perkalian</h3>
+    <script>
+      // Matriks awal
+      const mat1 = tf.tensor2d([
+        [1, 2],
+        [3, 4],
+      ]);
+      const mat2 = tf.tensor2d([
+        [5, 6],
+        [7, 8],
+      ]);
+
+      // Penjumlahan matriks
+      const resultAdd = mat1.add(mat2);
+      console.log("=====Penjumlahan Matriks=====");
+      console.log("Matriks 1:\n", mat1.toString());
+      console.log("Matriks 2:\n", mat2.toString());
+      console.log("Hasil Penjumlahan:\n", resultAdd.toString());
+
+      // Transpose matriks
+      const resultTranspose = mat1.transpose();
+      console.log("=====Transpose Matriks=====");
+      console.log("Matriks 1:\n", mat1.toString());
+      console.log("Transpose Matriks 1:\n", resultTranspose.toString());
+
+      // Inverse matriks (hanya untuk matriks 2x2)
+      const mat1Inverse = tf.tensor2d([
+        [mat1.dataSync()[3], -mat1.dataSync()[1]],
+        [-mat1.dataSync()[2], mat1.dataSync()[0]],
+      ])
+        .div(mat1.dataSync()[0] * mat1.dataSync()[3] - mat1.dataSync()[1] * mat1.dataSync()[2]);
+      console.log("=====Inverse Matriks=====");
+      console.log("Matriks 1:\n", mat1.toString());
+      console.log("Inverse Matriks 1:\n", mat1Inverse.toString());
+
+      // Perkalian matriks
+      const resultMultiply = mat1.matMul(mat2);
+      console.log("=====Perkalian Matriks=====");
+      console.log("Matriks 1:\n", mat1.toString());
+      console.log("Matriks 2:\n", mat2.toString());
+      console.log("Hasil Perkalian:\n", resultMultiply.toString());
+    </script>
+  </body>
+</html>

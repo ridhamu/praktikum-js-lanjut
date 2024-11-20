@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TensorFlow.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"></script>
+  </head>
+  <body>
+    <h2>TensorFlow.js GPU Math Example</h2>
+    <!-- Tombol untuk memulai operasi TensorFlow.js -->
+    <input
+      type="button"
+      value="Use GPU Math"
+      id="mybutton123"
+      onclick="performOperation()"
+    />
+    <br /><br />
+    <!-- Elemen untuk menampilkan hasil operasi -->
+    <div id="myDiv1234">Result will appear here</div>
+
+    <script>
+      function performOperation() {
+        // Membuat tensor dan scalar
+        const myA = tf.tensor1d([10, 20, 30], 'int32');
+        const myB = tf.scalar(2.1, 'float32');
+
+        // Melakukan operasi penjumlahan
+        const myResult = tf.add(myA, myB);
+
+        // Mengubah tensor menjadi array JavaScript
+        let myArray = Array.from(myResult.dataSync());
+
+        // Membulatkan hasil menjadi 2 angka desimal
+        let result2 = myArray.map((a) => a.toFixed(2));
+
+        // Menampilkan hasil di elemen HTML
+        document.getElementById('myDiv1234').innerHTML = `Hasil: ${result2}`;
+      }
+    </script>
+  </body>
+</html>
